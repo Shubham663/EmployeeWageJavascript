@@ -8,8 +8,8 @@ const MAX_HOURS_MONTH = 120;
 const MAX_DAYS_MONTH = 20;
 let workingDays = 0;
 let employeeHours = 0;
-let totalEmployeeHours = 0;
 let monthlyWage = 0;
+let totalEmployeeHours = 0;
 let employeeWageArray = new Array();
 while(workingDays < MAX_DAYS_MONTH && totalEmployeeHours < MAX_HOURS_MONTH){
     let employeeType = Math.floor(Math.random()*10)%3;
@@ -29,11 +29,17 @@ function sum(dailyWage){
 function monthlyWageReduce(total,dailyWageReduce){
     return total + dailyWageReduce;
 }
+counter = 0;
+function daysToWages(dailyWage){
+    counter++;
+    return counter+" Day's Wage : "+dailyWage;
+}
 
 employeeWageArray.forEach(sum);
 let totalWageReduce = employeeWageArray.reduce(monthlyWageReduce,0);
 console.log("Days: " + workingDays + " and Hours: " + totalEmployeeHours + " Employee Wage for the month using forEach: " + monthlyWage);
 console.log("Days: " + workingDays + " and Hours: " + totalEmployeeHours + " Employee Wage for the month using reduce: " + totalWageReduce);
+console.log("Days and daily wages : " + employeeWageArray.map(daysToWages));
 
 function getWorkHours(employeeType){
     let employeeHours = 0;
