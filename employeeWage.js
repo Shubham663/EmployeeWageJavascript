@@ -29,17 +29,27 @@ function sum(dailyWage){
 function monthlyWageReduce(total,dailyWageReduce){
     return total + dailyWageReduce;
 }
+
 counter = 0;
 function daysToWages(dailyWage){
     counter++;
-    return counter+" Day's Wage : "+dailyWage;
+    return counter+" : "+dailyWage;
 }
 
+function fullTime(dayToWageMap){
+    return dayToWageMap.includes("160");
+}
+
+function split(dayToWageMap){
+    console.log("Day: " + dayToWageMap.substr(0,dayToWageMap.indexOf(':')));
+}
 employeeWageArray.forEach(sum);
 let totalWageReduce = employeeWageArray.reduce(monthlyWageReduce,0);
 console.log("Days: " + workingDays + " and Hours: " + totalEmployeeHours + " Employee Wage for the month using forEach: " + monthlyWage);
 console.log("Days: " + workingDays + " and Hours: " + totalEmployeeHours + " Employee Wage for the month using reduce: " + totalWageReduce);
-console.log("Days and daily wages : " + employeeWageArray.map(daysToWages));
+let dayWageMap = employeeWageArray.map(daysToWages);
+console.log("Days for which employee worked full time");
+dayWageMap.filter(fullTime).forEach(split);
 
 function getWorkHours(employeeType){
     let employeeHours = 0;
