@@ -10,6 +10,7 @@ let workingDays = 0;
 let employeeHours = 0;
 let totalEmployeeHours = 0;
 let monthlyWage = 0;
+let employeeWageArray = new Array();
 while(workingDays < MAX_DAYS_MONTH && totalEmployeeHours < MAX_HOURS_MONTH){
     let employeeType = Math.floor(Math.random()*10)%3;
     if(employeeType == 0)
@@ -17,10 +18,12 @@ while(workingDays < MAX_DAYS_MONTH && totalEmployeeHours < MAX_HOURS_MONTH){
     employeeHours = getWorkHours(employeeType);
     totalEmployeeHours += employeeHours;
     let empWage = employeeHours*PER_HOUR_WAGE;
+    employeeWageArray.push(empWage);
     monthlyWage += empWage;
     workingDays++;
 }
 console.log("Days: " + workingDays + " and Hours: " + totalEmployeeHours + " Employee Wage for the month: " + monthlyWage);
+
 
 
 
