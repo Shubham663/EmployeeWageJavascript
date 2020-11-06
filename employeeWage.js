@@ -44,8 +44,12 @@ function split(dayToWageMap){
     console.log("Day: " + dayToWageMap.substr(0,dayToWageMap.indexOf(':')));
 }
 
-function occurence(dailyWage){
+function fullTimeOccurence(dailyWage){
     return dailyWage.includes("160");
+}
+
+function partTimeOccurence(dailyWage){
+    return dailyWage.includes("80");
 }
 
 employeeWageArray.forEach(sum);
@@ -56,10 +60,11 @@ let dayWageMap = employeeWageArray.map(daysToWages);
 let fullDayWageMap = dayWageMap.filter(fullTime);
 console.log("Days for which employee worked full time");
 dayWageMap.filter(fullTime).forEach(split);
-let firstFullDay = dayWageMap.find(occurence);
+let firstFullDay = dayWageMap.find(fullTimeOccurence);
 console.log("First Day for which he worked full time " + firstFullDay.substr(0,firstFullDay.indexOf(':')));
+console.log("Did employee work part time on any day? " + (dayWageMap.find(partTimeOccurence) != undefined));
 
-console.log(fullDayWageMap.every(fullTime));
+console.log("Does full time wage contain days when employee worked full time only? " + fullDayWageMap.every(fullTime));
 
 function getWorkHours(employeeType){
     let employeeHours = 0;
