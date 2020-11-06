@@ -19,13 +19,21 @@ while(workingDays < MAX_DAYS_MONTH && totalEmployeeHours < MAX_HOURS_MONTH){
     totalEmployeeHours += employeeHours;
     let empWage = employeeHours*PER_HOUR_WAGE;
     employeeWageArray.push(empWage);
-    monthlyWage += empWage;
     workingDays++;
 }
-console.log("Days: " + workingDays + " and Hours: " + totalEmployeeHours + " Employee Wage for the month: " + monthlyWage);
 
+function sum(dailyWage){
+    monthlyWage += dailyWage;
+}
 
+function monthlyWageReduce(total,dailyWageReduce){
+    return total + dailyWageReduce;
+}
 
+employeeWageArray.forEach(sum);
+let totalWageReduce = employeeWageArray.reduce(monthlyWageReduce,0);
+console.log("Days: " + workingDays + " and Hours: " + totalEmployeeHours + " Employee Wage for the month using forEach: " + monthlyWage);
+console.log("Days: " + workingDays + " and Hours: " + totalEmployeeHours + " Employee Wage for the month using reduce: " + totalWageReduce);
 
 function getWorkHours(employeeType){
     let employeeHours = 0;
