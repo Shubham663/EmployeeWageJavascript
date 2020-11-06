@@ -53,10 +53,14 @@ let totalWageReduce = employeeWageArray.reduce(monthlyWageReduce,0);
 console.log("Days: " + workingDays + " and Hours: " + totalEmployeeHours + " Employee Wage for the month using forEach: " + monthlyWage);
 console.log("Days: " + workingDays + " and Hours: " + totalEmployeeHours + " Employee Wage for the month using reduce: " + totalWageReduce);
 let dayWageMap = employeeWageArray.map(daysToWages);
+let fullDayWageMap = dayWageMap.filter(fullTime);
 console.log("Days for which employee worked full time");
 dayWageMap.filter(fullTime).forEach(split);
 let firstFullDay = dayWageMap.find(occurence);
 console.log("First Day for which he worked full time " + firstFullDay.substr(0,firstFullDay.indexOf(':')));
+
+console.log(fullDayWageMap.every(fullTime));
+
 function getWorkHours(employeeType){
     let employeeHours = 0;
     switch(employeeType){
